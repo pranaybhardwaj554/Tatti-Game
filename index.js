@@ -2,13 +2,16 @@ var a=[];
 var b=[];
 var color=["green","red","yellow","blue"];
 var start=false;
-$(document).keypress(function () {
-  if(!start){
+$(".btn").click(function () {
     start=true;
+    a=[];
+    b=[];
     level();
-  }
+    $(".btn").text("Reset");
+    $(".btn").addClass("btn2");
+    $(".btn").removeClass("btn");
   });
-$(".btn").click(function(){
+$(".btn1").click(function(){
   if(start){
     b.push($(this).attr("id"));
     if(a[b.length-1]==$(this).attr("id")){
@@ -31,7 +34,7 @@ $(".btn").click(function(){
       setTimeout(function () {
         $("body").removeClass("game-over");
         }, 100);
-      $("h1").text("Game-over press any button to restart the game");
+      $("h1").text("Game-over press Reset button to restart the game");
       var audio = new Audio('sounds/wrong.mp3');
       audio.play();
       start=false;
@@ -52,3 +55,4 @@ function sound() {
   var audio = new Audio('sounds/'+color[x]+'.mp3');
   audio.play();
 }
+
